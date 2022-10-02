@@ -2,22 +2,24 @@
 import { useEffect, useRef, useState } from 'react';
 import './sql-editor.css';
 
-export function SqlEditor({value, readOnly, onCreate}) {
+export function SqlEditor({value, selected=false, placeholder="Enter your SQL", createOnly = false, readOnly, onCreate = () => {}, onEdit = () => {}, onDelete = () => {}, onExecute = () => {}}) {
 
     const [inpValue, setInpValue] = useState(value)
-    return <div className="sql-editor">
-        <textarea readOnly={readOnly} className="editor" value={inpValue} onChange={(e) => {
+    return <div className={selected ? 'sql-editor selected' : 'sql-editor'} onClick={onExecute} >
+        <textarea placeholder={placeholder} readOnly={readOnly} className="editor" value={inpValue} onChange={(e) => {
             setInpValue(e.target.value);
         }}></textarea>
         <div className="bottom-actions">
-            {readOnly ? <>
-            <button className="execute-button">Play</button>
-            <button className="execute-button">Edit</button>
-            <button className="execute-button">Exec</button></> : 
-            <button className="execute-button" onClick={ () =>
+            {createOnly ? 
+            <button className="execute-button" onClick={
                 inpValue ?
-                onCreate.bind(this, inpValue) : () => { console.log(inpValue) }
-            }>Create</button>
+                onCreate.bind(this, inpValue) : () => { }
+            }>Create</button> :
+            <>
+                <button className="button" onClick={onExecute}>Re-Execute</button>
+                <button className="button delete-button" onClick={onDelete}>Delete</button>
+            </> 
+            
             }
         </div>
     </div>

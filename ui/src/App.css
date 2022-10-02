@@ -19,6 +19,8 @@
 
 .data-grid {
   flex-grow: 1;
+  justify-content: center;
+  display: flex;
 }
 
 .App-logo {

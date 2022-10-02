@@ -4,11 +4,22 @@
     border-radius: 30px;
     margin: 15px;
     box-sizing: border-box;
-    
+    cursor: pointer;
 }
 
-.execute-button {
+.button {
     background-color: blue;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.selected {
+    background-color: rgb(255 255 255);
+}
+
+.delete-button {
+    background-color: red;
     margin: 5px;
     border-radius: 5px;
     color: white;
@@ -22,7 +33,12 @@
     font-size: 25px;
     width: 84%;
     border: none;
+    cursor: pointer;
     background-color: #cdced0;
+}
+
+.selected > .editor {
+    background-color: rgb(255 255 255);
 }
 
 .editor:focus-visible {
