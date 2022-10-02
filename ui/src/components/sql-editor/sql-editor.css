@@ -1,0 +1,36 @@
+
+.sql-editor {
+    background-color: rgba(255, 255, 255, 0.769);
+    border-radius: 30px;
+    margin: 15px;
+    box-sizing: border-box;
+    
+}
+
+.execute-button {
+    background-color: blue;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.editor {
+    margin: 5px;
+    height: 100px;
+    color: black;
+    text-align: left;
+    font-size: 25px;
+    width: 84%;
+    border: none;
+    background-color: #cdced0;
+}
+
+.editor:focus-visible {
+    outline: none;
+}
+
+.bottom-actions {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+}
