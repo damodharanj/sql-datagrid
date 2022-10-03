@@ -46,7 +46,17 @@ function App() {
                     ...editors.slice(i + 1, editors.length)
                   ])
                 }}
-                onExecute={() => {
+                onExecute={(reExecute = false) => {
+                  if (reExecute) {
+                    setEditors([
+                      ...editors.slice(0, i),
+                      {...editors[selectedEditor], data: generateRowData(500, editors[selectedEditor].metaInfo.length)},
+                      ...editors.slice(i + 1, editors.length)
+                    ])
+                    console.log(
+                      {...editors[selectedEditor], data: generateRowData(500, editors[selectedEditor].metaInfo.length)}
+                    );
+                  }
                   setSelectedEditor(i);
                 }}
                 selected={i === selectedEditor}
