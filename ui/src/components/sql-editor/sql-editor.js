@@ -30,7 +30,7 @@ export function SqlEditor({value, selected=false, placeholder="Enter your SQL", 
             {createOnly ? 
             <button className="execute-button" onClick={ () => {
                 inpValue ?
-                onCreate.bind(this, inpValue)() :
+                onCreate.bind(this, inpValue, setInpValue)() :
                 toast.error('Invalid Query');
             }
             }>Create</button> :

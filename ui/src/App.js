@@ -31,7 +31,7 @@ function App() {
   }
 
   const duplicateValidation = (newValue) =>
-    editors.reduce((acc, x, i) => {
+    newValue.trim() && editors.reduce((acc, x, i) => {
       if (x.query === newValue.trim()) {
         return i;
       }
@@ -44,19 +44,22 @@ function App() {
           <div className="heading">SQL Scratchpad</div>
           <div style={{display: 'flex', flexDirection: 'row'}}>
             <div className="sql-list">
-              <SqlEditor createOnly={true} onCreate={(newValue) => {
-                newValue = newValue.trim();
-                const index = duplicateValidation(newValue);
-                if (index > -1) {
-                  toast.info('Query already present, navigated')
-                  setSelectedEditor(index);
-                  return;
-                }
-                toast.info('Created a new query')
-                setEditors([createEditor(newValue), ...editors])
-                setSelectedEditor(0);
-              }}></SqlEditor>
-              <div class="sql-editors">
+              <SqlEditor createOnly={true} 
+                onCreate={(newValue, setValue) => {
+                  newValue = newValue.trim();
+                  const index = duplicateValidation(newValue);
+                  if (index > -1) {
+                    toast.info('Query already present, navigated')
+                    setSelectedEditor(index);
+                    return;
+                  }
+                  toast.info('Created a new query')
+                  setEditors([createEditor(newValue), ...editors])
+                  setSelectedEditor(0);
+                  setValue('')
+                }}>
+              </SqlEditor>
+              <div className="sql-editors">
               {editors.map((x, i) => <SqlEditor 
                 createOnly={false}
                 onChange={(query, setValue) => {
