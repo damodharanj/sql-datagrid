@@ -13,8 +13,12 @@
   width: 300px;
   height: calc(100vh - 50px);
   border-right: 1px solid white;
-  overflow: scroll;
 
+}
+
+.sql-editors {
+  overflow: scroll;
+  height: calc(100% - 200px);
 }
 
 .data-grid {
