@@ -14,7 +14,7 @@
     * This is done inorder to avoid re-fecthing of huge data in realtime
 
 ## Libraries used
-* react - framework
+* react - UI framework
 * @faker-js/faker - Generate fake data for table population
 * @glideapps/glide-data-grid - High performance data grid
 * react-toastify - Toast message to be displayed for user
